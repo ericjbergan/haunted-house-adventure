@@ -29,36 +29,44 @@ public class Rooms {
 
         switch (userEntry) {
             case "look door":
-                System.out.println("It's still there.");
+                System.out.println("\nIt's still there.");
                 frontPorch(inv);
                 break;
             case "open door",
                     "unlock door":
                 if (inv.get("key")) {
                     entryWay(inv);
+                    break;
                 } else {
-                    System.out.println("Didn't I mention that it's weathered, and locked?");
+                    System.out.println("\nDidn't I mention that it's locked?");
                     frontPorch(inv);
                 }
                 break;
+            case "look window",
+                    "look windows":
+                System.out.println("\nThey're broken. And it's getting colder. And you didn't bring a coat.");
+                frontPorch(inv);
+                break;
             case "look doormat":
                 if (inv.get("key")) {
-                    System.out.println("I think you looked there already.");
+                    System.out.println("\nI think you looked there already.");
                     frontPorch(inv);
+                    break;
                 } else {
-                    System.out.println("It looks like it used to have some clever saying on it. " +
+                    System.out.println("\nIt looks like it used to have some clever saying on it. " +
                             "Underneath you find a key, how original.");
                     inv.put("key", true);
                 }
                 frontPorch(inv);
                 break;
             default:
-                System.out.println("I'm not sure what you mean.");
+                System.out.println("\nI'm not sure what you mean.");
                 frontPorch(inv);
         }
     }
 
     private static void entryWay(HashMap<String, Boolean> inv) {
-        System.out.println("You are in the entryway.");
+        System.out.println("\nYou are in the entryway. To the north you can see a hallway. To the south is the door " +
+                "\nthrough which you entered the house.");
     }
 }
